@@ -1,0 +1,1106 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/*COLORS
+
+Red: #F83B3F
+Yellow: #FCB744
+White: #EFEBEC
+Black: #17242E
+
+*/
+
+/*
+@font-face {
+    font-family: "Helvetica Neue LT Pro Bold";
+    src: url(../fonts/HelveticaNeueLTPro-Bd_0.otf);
+}
+
+@font-face {
+    font-family: "Helvetica Neue LT Pro Black";
+    src: url(../fonts/HelveticaNeueLTPro-Blk.otf);
+}*/
+
+h1 {
+    font-family: "Stymie";
+    font-size: 6.25rem; 
+    text-transform: uppercase;
+}
+
+h2 {
+    font-family: "Stymie";
+   font-size: 2.75rem; 
+    text-transform: uppercase;
+}
+
+h3 {
+    font-family: "Stymie";
+   font-size: 1.5rem;  
+    text-transform: uppercase;
+}
+
+h4 {
+    
+}
+
+p {
+    font-family: "Century Schoolbook L";
+   font-size: 1rem;  
+    line-height: 1.2;
+}
+
+a {
+    font-family: "Stymie";
+   font-size: 1rem;  
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #EFEBEC;
+}
+
+body {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+/*    cursor: url('../images/cursor-red-middle.png'), auto;*/
+}
+
+body>img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.cursor {
+    z-index: 100;
+    width: 30px;
+    height: 30px;
+/*
+    border: 3px solid #F83B3F;
+    border-radius: 50%;
+*/
+    
+    position: absolute;
+    transition-duration: .2s;
+    transition-timing-function: ease-out;
+    pointer-events: none;
+}
+
+.cursor::after {
+    z-index: 100;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    
+    content: "";
+    background-image: url(../images/cursor-red-nomiddle.svg);
+    background-repeat: no-repeat;
+    background-position: left top;
+    background-size: 30px;
+    transform-origin: 50% 50%;
+    
+     animation-name: cursoranimation;
+    animation-duration: 5s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes cursoranimation {
+    0% {
+        transform: rotate(0deg);
+    }
+    
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/*INTROSECTION*/
+
+/*
+body > section:nth-of-type(1) {
+    display: none;
+}
+*/
+
+@keyframes opacitytransition {
+    0% {
+       opacity: 0;
+    }
+    
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes opacitytransition-reverse {
+    0% {
+       opacity: 1;
+    }
+    
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes introsection-position {
+    0% {
+       height: 100vh;
+    }
+    
+    100% {
+        height: 0vh;
+    }
+}
+
+body > section:nth-of-type(1) {
+    position: absolute;
+    z-index: 20;
+    width: 100vw;
+    height: 100vh;
+    background-color: #EFEBEC;
+    
+     animation-name: introsection-position;
+    animation-delay: 7s;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+}
+
+/*
+@keyframes gunbarrelintro-rotation {
+    0% {
+       opacity: 0;
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+*/
+
+@keyframes gunbarrelintro-rotation {
+    0% {
+       opacity: 0;
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    
+    33% {
+        opacity: 1;
+        transform: translate(-50%, -50%) rotate(360deg);
+        top: 50%;
+       height: 20rem;
+    }
+    
+    66% {
+        opacity: 1;
+        transform: translate(-50%, -50%) rotate(360deg);
+        top: 50%;
+       height: 20rem;
+    }
+    
+    100% {
+        opacity: 1;
+        height: 3.75rem;
+    top: 3rem;
+    left: 50%;
+    transform: translate(-50%, 0%) rotate(720deg);
+    }
+}
+
+/*
+
+@keyframes gunbarrelintro-rotation-alt {
+    0% {
+        top: 150%;
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    
+    70% {
+        top: 50%;
+    }
+    
+    100% {
+        top: 50%;
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+header > section:nth-of-type(1) div {
+  clip: rect(0px, 15rem, 15rem, 0px);
+    width: 15rem;
+    height: 15rem;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(0deg);
+}
+*/
+
+body > section:nth-of-type(1) img {
+    fill: #17242E;
+    height: 20rem;
+    transform-origin: 50% 50%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(0deg);
+    opacity: 0;
+    
+    animation-name: gunbarrelintro-rotation, opacitytransition-reverse;
+    animation-delay: 3s, 9s;
+    animation-duration: 6s, 1s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+}
+
+
+body > section:nth-of-type(1) h2 {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #17242E;
+}
+
+body > section:nth-of-type(1) h2:nth-of-type(1) {
+    left: 6.25rem;
+    
+    opacity: 0;
+    animation-name: opacitytransition, opacitytransition-reverse;
+    animation-delay: 1s, 7s;
+    animation-duration: 1s, 1s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+    
+}
+
+body > section:nth-of-type(1) h2:nth-of-type(1)::after{
+    content: "clicks";
+    position: absolute;
+    font-family: "Stymie";
+    font-size: 6.25rem; 
+    text-transform: uppercase;
+    letter-spacing: 10px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: #F83B3F;
+    z-index: -10;
+}
+
+body > section:nth-of-type(1) h2:nth-of-type(2) {
+    right: 6.25rem;
+    
+    opacity: 0;
+    animation-name: opacitytransition, opacitytransition-reverse;
+    animation-delay: 1s, 7s;
+    animation-duration: 1s, 1s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+}
+
+body > section:nth-of-type(1) h2:nth-of-type(2)::after{
+    content: "them";
+    position: absolute;
+    font-family: "Stymie";
+    font-size: 6.25rem; 
+    text-transform: uppercase;
+    letter-spacing: 10px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: #F83B3F;
+    z-index: -10;
+}
+
+body > section:nth-of-type(1) h2 span {
+    font-size: 1.5rem
+}
+
+@keyframes bulletsleftanimation {
+    0% {
+        bottom: 6rem;
+        opacity: 0;
+        
+    }
+    
+    100% {
+        opacity: 1;
+        bottom: 3rem;
+    }
+}
+
+body > section:nth-of-type(1) h3 {
+    position: absolute;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #17242E;
+    text-align: center;
+    
+    opacity: 0;
+    animation-name: bulletsleftanimation, opacitytransition-reverse;
+    animation-delay: 3s, 7s;
+    animation-duration: 1s, 1s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+}
+
+body > section:nth-of-type(1) h3::after{
+    text-align: center;
+    content: "VIII";
+    position: absolute;
+    font-family: "Stymie";
+    font-size: 4rem; 
+    text-transform: uppercase;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: #F83B3F;
+    z-index: -10;
+}
+
+/*OUT OF BULLETS*/
+
+@keyframes outofbulletsanimation {
+    0% {
+        transform: rotate(0deg);
+    }
+    
+     100% {
+    transform: rotate(1turn);
+    }
+}
+
+body > section:nth-of-type(2) {
+    position: fixed;
+    z-index: 30;
+    width: 100vw;
+    height: 100vh;
+    background-color: #17242E;
+    text-align: center;
+    padding: 3rem;
+    top: -100vh;
+    transition: 1s;
+}
+
+body > section:nth-of-type(2).outofbullets {
+    top: 0vh;
+}
+
+body > section:nth-of-type(2) h1 {
+    color: #FCB744;
+    font-size: 12.5rem;
+    margin-bottom: 2rem;
+}
+
+body > section:nth-of-type(2) h1:nth-of-type(2) {
+    font-size: 10rem;
+}
+
+body > section:nth-of-type(2) div {
+    display: inline-block;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+body > section:nth-of-type(2) div img {
+    display: inline-block;
+    transform-origin: 50% 50%;
+    width: 7.25rem;
+    animation-name: outofbulletsanimation;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+body > section:nth-of-type(2) div h2 {
+    padding-right: 2rem;
+    display: inline-block;
+    color: #EFEBEC;
+}
+
+body > section:nth-of-type(2) div h2:nth-of-type(2) {
+    padding-left: 2rem;
+}
+
+body > section:nth-of-type(2) h3 {
+    color: #EFEBEC;
+}
+
+body > section:nth-of-type(2) h3 > span {
+    font-size: 1rem;
+}
+
+/*HEADER*/
+
+header  {
+    position: fixed;
+    z-index: 20;
+    top: 0;
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    padding: 3rem;
+    opacity: 0;
+    
+    animation-name: opacitytransition;
+    animation-delay: 9s;
+    animation-duration: .5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+}
+
+header > svg:nth-of-type(1) {
+    fill: #EFEBEC; 
+    height: 3.75rem;
+    display: inline-block;
+    transition: 1s;
+}
+
+header > svg.shownav {
+    fill: #EFEBEC; 
+    margin-left: 3rem;
+}
+
+header > svg:nth-of-type(2) {
+    fill: #17242E; 
+    height: 3.75rem;
+    transform-origin: 50% 50%;
+     display: inline-block;
+    
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(0deg);
+}
+
+.usedbullet {
+    transition: .5s;
+    opacity: .5;
+}
+
+
+header > svg.usedbulletgun1 {
+transform: translate(-50%, -50%) rotate(-45deg);
+    transition-duration: .5s;
+}
+
+header > svg.usedbulletgun2 {
+transform: translate(-50%, -50%) rotate(-90deg);
+    transition-duration: .5s;
+}
+
+header > svg.usedbulletgun3 {
+transform: translate(-50%, -50%) rotate(-135deg);
+    transition-duration: .5s;
+}
+
+header > svg.usedbulletgun4 {
+transform: translate(-50%, -50%) rotate(-180deg);
+    transition-duration: .5s;
+}
+
+header > svg.usedbulletgun5 {
+transform: translate(-50%, -50%) rotate(-225deg);
+    transition-duration: .5s;
+}
+
+header > svg.usedbulletgun6 {
+transform: translate(-50%, -50%) rotate(-270deg);
+    transition-duration: .5s;
+}
+
+header > svg.usedbulletgun7 {
+transform: translate(-50%, -50%) rotate(-315deg);
+    transition-duration: .5s;
+}
+
+header > svg.usedbulletgun8 {
+transform: translate(-50%, -50%) rotate(-360deg);
+    transition-duration: .5s;
+}
+
+
+header a {
+    display: inline-block;
+}
+
+header nav {
+    overflow: none;
+    position: absolute;
+    background-color: #F83B3F;
+    height: 100vh;
+    width: calc(0vw - 3rem);
+    right: 0;
+    top: 0;
+    z-index: -10;
+    transition: 1s;
+}
+
+header nav.shownav {
+    width: calc(100vw - 3rem);
+}
+
+header nav ul {
+    margin-left: 15rem;
+    margin-top: 15rem;
+    display: inline-block;
+}
+
+header nav ul li a {
+    font-family: "Stymie";
+   font-size: 2.75rem; 
+    text-transform: uppercase;
+    color: #17242E;
+}
+
+header nav ul li a span {
+    font-family: "Stymie";
+   font-size: 1.5rem;  
+    text-transform: uppercase;
+    text-align: right;
+    width: 2rem;
+    margin-right: .5rem;
+    display: inline-block;
+}
+
+header nav div {
+   position: absolute;
+    bottom: 3rem;
+    left: 3rem;
+}
+
+header nav div h3 {
+    display: block;
+    color: #EFEBEC;
+    margin-bottom: 1rem;
+}
+
+header > nav div > svg:nth-of-type(1) {
+    margin-left: -.5rem;
+}
+
+header > nav div > svg {
+    fill: #EFEBEC;
+    width: 1.5rem;
+    display: inline-block;
+    margin-right: -.5rem;
+    transition: .5s;
+}
+
+/*MAIN LANDING*/
+
+main {
+     z-index: -20;
+}
+
+main > section:nth-of-type(1) {
+    background-color: #F83B3F;
+/*
+    width: 100vw;
+    height: 100vh;
+    display: block;
+*/
+    z-index: -10;
+}
+
+.parallax {
+  perspective: 1px;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.parallax__layer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.parallax__layer--1 {
+  transform: translateZ(0);
+}
+
+.parallax__layer--2 {
+  transform: translateZ(-.5px) scale(1.5);
+}
+
+.parallax__layer--3 {
+  transform: translateZ(-1px) scale(2);
+}
+
+.parallax__layer--4 {
+  transform: translateZ(-1.5px) scale(2.5);
+}
+
+.parallax__layer--5 {
+  transform: translateZ(-2px) scale(3);
+}
+
+.parallax__layer--6 {
+  transform: translateZ(-2.5px) scale(3.5);
+}
+
+.parallax__layer--7 {
+  transform: translateZ(-3px) scale(4);
+}
+
+.parallax__layer--title {
+  transform: translateZ(-10px) scale(11);
+}
+
+.parallax__layer--text {
+  transform: translateZ(0);
+    transform: translateZ(-.2px) scale(1.2);
+}
+
+.parallax__layertext {
+  position: absolute;
+  top: 120vh;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+
+/*MAIN STORY*/
+
+.parallax__layertext > section {
+    padding: 6rem;
+    background-color: #17242E;
+/*    width: 100vw;*/
+    height: 120vh;
+/*
+    display: flex;
+    justify-content: space-between;
+*/
+/*    position: relative;*/
+    
+    display: grid;
+        grid-template-columns: repeat(5, 20%);
+    grid-template-rows: repeat(2, 40%);
+}
+
+.parallax__layertext > section > h2 {
+    width: 70%;
+    text-transform: capitalize;
+    color: #EFEBEC;
+    line-height: 1.2;
+    
+    grid-column: 1 / 5;
+}
+
+.parallax__layertext article {
+    position: relative;
+    text-transform: capitalize;
+    color: #EFEBEC;
+    text-align: center;
+     z-index: 2;
+    
+    grid-column: 5; 
+    justify-self: end;
+}
+
+.parallax__layertext article:nth-of-type(1) {
+    display: none;
+}
+
+.parallax__layertext article:nth-of-type(1).story-eightcharacters {
+    display: inline-block;
+}
+
+.parallax__layertext article:nth-of-type(2) {
+    display: none;
+}
+
+.parallax__layertext article:nth-of-type(2).story-twosettings {
+    display: inline-block;
+}
+
+.parallax__layertext article:nth-of-type(3) {
+     display: none;
+}
+
+.parallax__layertext article:nth-of-type(3).story-onedirector {
+    display: inline-block;
+}
+
+.parallax__layertext article h3 {
+    margin-bottom: .5rem;  
+    position: relative;
+    display: inline-block;
+}
+
+.parallax__layertext article h3::before {
+        content: url(../images/divider-white.svg);
+    position: absolute;
+    top: -5px;
+    left: -165px;
+    width: 145px;
+}
+
+.parallax__layertext article h3::after {
+        content: url(../images/divider-white2.svg);
+    position: absolute;
+    top: -5px;
+    right: -165px;
+    width: 145px;
+}
+
+.parallax__layertext article p:nth-of-type(1) {
+    font-family: "Swanish Two";
+    font-size: 15.5rem;
+    color: #F83B3F;
+    position: absolute;
+    top: -7rem;
+    left: 50%;
+    transform: translate(-50%);
+    z-index: -1;
+}
+
+.parallax__layertext article h2 {
+    margin-bottom: 1.5rem;
+     
+}
+
+.parallax__layertext article p {
+width: 20rem;   
+    text-transform: none;
+    margin-bottom: 1.5rem;
+}
+
+.parallax__layertext div:last-of-type {
+    width: 20rem;
+    grid-column: 5;
+    grid-row: 2;
+    justify-self: end;
+}
+
+.parallax__layertext div:last-of-type > div {
+    width: auto;
+    display: table;
+    margin: 0 auto
+}
+
+.parallax__layertext div svg {
+    fill: #EFEBEC;
+    width: 1.5rem;
+    display: inline-block;
+    margin-left: .25rem;
+    margin-right: .25rem;
+    transition: .5s;
+}
+
+.parallax__layertext > img {
+    display: block;
+    margin-top: -20rem;
+}
+
+/*MAIN CHARACTERS*/
+
+main section:nth-of-type(2) {
+    padding: 6rem;
+ background-color: #EFEBEC;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    text-align: center;
+    
+        display: flex;
+    align-items: center;
+  justify-content: center;
+}
+
+main section:nth-of-type(2) > div:nth-of-type(1) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+
+main section:nth-of-type(2) div:nth-of-type(1) h3 {
+    margin-bottom: .5rem;  
+    position: relative;
+    display: inline-block;
+    color: #F83B3F;
+}
+
+main section:nth-of-type(2) div:nth-of-type(1) h3::before {
+        content: url(../images/divider-red.svg);
+    position: absolute;
+    top: -5px;
+    left: -165px;
+    width: 145px;
+}
+
+main section:nth-of-type(2) div:nth-of-type(1) h3::after {
+        content: url(../images/divider-red2.svg);
+    position: absolute;
+    top: -5px;
+    right: -165px;
+    width: 145px;
+}
+
+main section:nth-of-type(2) div:nth-of-type(1) h2 {
+    color: #F83B3F;
+}
+
+main section:nth-of-type(2) div:nth-of-type(2) { 
+
+}
+
+main section:nth-of-type(2) h1 {
+    font-size: 18.75rem;
+    background: url("../images/Bountyhunter-blackwhite.png") center;
+    background-size: 100vw;
+  background-attachment: fixed;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  text-align: center;
+    transition: 1s;
+}
+
+main section:nth-of-type(2) h1.hatefulone {
+    background: url("../images/Bountyhunter-blackwhite.png") center;
+    background-size: 100vw;
+  background-attachment: fixed;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
+main section:nth-of-type(2) h1.hatefultwo {
+    background: url("../images/Hangman-blackwhite.png") center;
+    background-size: 100vw;
+  background-attachment: fixed;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
+main section:nth-of-type(2) h1.hatefulthree {
+    background: url("../images/Prisoner-blackwhite.png") center;
+    background-size: 100vw;
+  background-attachment: fixed;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
+main section:nth-of-type(2) h1.hatefulfour {
+    background: url("../images/Sheriff-blackwhite.png") center;
+    background-size: 100vw;
+  background-attachment: fixed;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
+main section:nth-of-type(2) h1.hatefulfive {
+    background: url("../images/Mexican-blackwhite.png") center;
+    background-size: 100vw;
+  background-attachment: fixed;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
+main section:nth-of-type(2) h1.hatefulsix {
+    background: url("../images/Cowpuncher-blackwhite.png") center;
+    background-size: 100vw;
+  background-attachment: fixed;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
+main section:nth-of-type(2) h1.hatefulseven {
+    background: url("../images/Littleman-blackwhite.png") center;
+    background-size: 100vw;
+  background-attachment: fixed;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
+main section:nth-of-type(2) h1.hatefuleight {
+    background: url("../images/Confederate-blackwhite.png") center;
+    background-size: 100vw;
+  background-attachment: fixed;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
+main section:nth-of-type(2) div:nth-of-type(2) > div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+main section:nth-of-type(2) div:nth-of-type(2) > div h2 {
+    color: #17242E;
+    transition: .5s;
+}
+
+main section:nth-of-type(2) div:nth-of-type(2) > div h2:hover {
+    color: #F83B3F;
+}
+
+/*MAIN SETTINGS*/
+
+main section:nth-of-type(3) {
+ background-color: #EFEBEC;
+    width: 100vw;
+    height: 100vh;
+    height: 800px;
+    position: relative;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+
+
+main section:nth-of-type(3) img {
+    position: sticky;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%) scale(2);
+    height: 100vh;
