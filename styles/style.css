@@ -578,7 +578,7 @@ body > section:nth-of-type(2) h3 > span {
 
 header  {
     position: fixed;
-    z-index: 20;
+    z-index: 50;
     top: 0;
     width: 100%;
     display: flex;
@@ -607,7 +607,7 @@ header > svg.shownav {
 }
 
 header > svg:nth-of-type(2) {
-    fill: #17242E; 
+    fill: #EFEBEC; 
     height: 3.75rem;
     transform-origin: 50% 50%;
      display: inline-block;
@@ -623,6 +623,13 @@ header > svg:nth-of-type(2) {
     opacity: .5;
 }
 
+header > svg:nth-of-type(1).changecolorlogo {
+    fill: #F83B3F;
+}
+
+header > svg:nth-of-type(2).changecolorgun {
+    fill: #17242E;
+}
 
 header > svg.usedbulletgun1 {
 transform: translate(-50%, -50%) rotate(-45deg);
@@ -669,6 +676,10 @@ header a {
     display: inline-block;
 }
 
+.changecolor1 {
+    color: #17242E;
+}
+
 header nav {
     overflow: none;
     position: absolute;
@@ -696,6 +707,11 @@ header nav ul li a {
    font-size: 2.75rem; 
     text-transform: uppercase;
     color: #17242E;
+    transition: .3s;
+}
+
+header nav ul li a:hover {
+    color: #FCB744;
 }
 
 header nav ul li a span {
@@ -949,6 +965,7 @@ main section:nth-of-type(2) {
     height: 100vh;
     position: relative;
     text-align: center;
+    overflow: visible;
     
         display: flex;
     align-items: center;
@@ -960,17 +977,17 @@ main section:nth-of-type(2) > div:nth-of-type(1) {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 10;
+    z-index: 20;
 }
 
-main section:nth-of-type(2) div:nth-of-type(1) h3 {
+main section:nth-of-type(2) > div:nth-of-type(1) h3 {
     margin-bottom: .5rem;  
     position: relative;
     display: inline-block;
     color: #F83B3F;
 }
 
-main section:nth-of-type(2) div:nth-of-type(1) h3::before {
+main section:nth-of-type(2) > div:nth-of-type(1) h3::before {
         content: url(../images/divider-red.svg);
     position: absolute;
     top: -5px;
@@ -978,7 +995,7 @@ main section:nth-of-type(2) div:nth-of-type(1) h3::before {
     width: 145px;
 }
 
-main section:nth-of-type(2) div:nth-of-type(1) h3::after {
+main section:nth-of-type(2) > div:nth-of-type(1) h3::after {
         content: url(../images/divider-red2.svg);
     position: absolute;
     top: -5px;
@@ -990,11 +1007,7 @@ main section:nth-of-type(2) div:nth-of-type(1) h2 {
     color: #F83B3F;
 }
 
-main section:nth-of-type(2) div:nth-of-type(2) { 
-
-}
-
-main section:nth-of-type(2) h1 {
+main section:nth-of-type(2) div:nth-of-type(2) h1 {
     font-size: 18.75rem;
     background: url("../images/Bountyhunter-blackwhite.png") center;
     background-size: 100vw;
@@ -1005,7 +1018,7 @@ main section:nth-of-type(2) h1 {
     transition: 1s;
 }
 
-main section:nth-of-type(2) h1.hatefulone {
+main section:nth-of-type(2) div:nth-of-type(2) h1.hatefulone {
     background: url("../images/Bountyhunter-blackwhite.png") center;
     background-size: 100vw;
   background-attachment: fixed;
@@ -1013,7 +1026,7 @@ main section:nth-of-type(2) h1.hatefulone {
   -webkit-background-clip: text;
 }
 
-main section:nth-of-type(2) h1.hatefultwo {
+main section:nth-of-type(2) div:nth-of-type(2) h1.hatefultwo {
     background: url("../images/Hangman-blackwhite.png") center;
     background-size: 100vw;
   background-attachment: fixed;
@@ -1021,7 +1034,7 @@ main section:nth-of-type(2) h1.hatefultwo {
   -webkit-background-clip: text;
 }
 
-main section:nth-of-type(2) h1.hatefulthree {
+main section:nth-of-type(2) div:nth-of-type(2) h1.hatefulthree {
     background: url("../images/Prisoner-blackwhite.png") center;
     background-size: 100vw;
   background-attachment: fixed;
@@ -1029,7 +1042,7 @@ main section:nth-of-type(2) h1.hatefulthree {
   -webkit-background-clip: text;
 }
 
-main section:nth-of-type(2) h1.hatefulfour {
+main section:nth-of-type(2) div:nth-of-type(2) h1.hatefulfour {
     background: url("../images/Sheriff-blackwhite.png") center;
     background-size: 100vw;
   background-attachment: fixed;
@@ -1037,7 +1050,7 @@ main section:nth-of-type(2) h1.hatefulfour {
   -webkit-background-clip: text;
 }
 
-main section:nth-of-type(2) h1.hatefulfive {
+main section:nth-of-type(2) div:nth-of-type(2) h1.hatefulfive {
     background: url("../images/Mexican-blackwhite.png") center;
     background-size: 100vw;
   background-attachment: fixed;
@@ -1045,7 +1058,7 @@ main section:nth-of-type(2) h1.hatefulfive {
   -webkit-background-clip: text;
 }
 
-main section:nth-of-type(2) h1.hatefulsix {
+main section:nth-of-type(2) div:nth-of-type(2) h1.hatefulsix {
     background: url("../images/Cowpuncher-blackwhite.png") center;
     background-size: 100vw;
   background-attachment: fixed;
@@ -1053,7 +1066,7 @@ main section:nth-of-type(2) h1.hatefulsix {
   -webkit-background-clip: text;
 }
 
-main section:nth-of-type(2) h1.hatefulseven {
+main section:nth-of-type(2) div:nth-of-type(2) h1.hatefulseven {
     background: url("../images/Littleman-blackwhite.png") center;
     background-size: 100vw;
   background-attachment: fixed;
@@ -1061,12 +1074,16 @@ main section:nth-of-type(2) h1.hatefulseven {
   -webkit-background-clip: text;
 }
 
-main section:nth-of-type(2) h1.hatefuleight {
+main section:nth-of-type(2) div:nth-of-type(2) h1.hatefuleight {
     background: url("../images/Confederate-blackwhite.png") center;
     background-size: 100vw;
   background-attachment: fixed;
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
+}
+
+main section:nth-of-type(2) div:nth-of-type(2) {
+    z-index: 10;
 }
 
 main section:nth-of-type(2) div:nth-of-type(2) > div {
@@ -1084,23 +1101,333 @@ main section:nth-of-type(2) div:nth-of-type(2) > div h2:hover {
     color: #F83B3F;
 }
 
-/*MAIN SETTINGS*/
-
-main section:nth-of-type(3) {
- background-color: #EFEBEC;
+main section:nth-of-type(2) > img {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100vw;
-    height: 100vh;
-    height: 800px;
-    position: relative;
-    overflow-y: scroll;
-    overflow-x: hidden;
 }
 
 
+/*CHARACTER DETAIL*/
 
-main section:nth-of-type(3) img {
-    position: sticky;
+main section:nth-of-type(2) > section {
+    position: absolute;
     top: 0;
-    left: 50%;
-    transform: translateX(-50%) scale(2);
+    overflow: none;
+    width: 100%;
+    height: 100%;
+    z-index: 30;
+    display: flex;
+    justify-content: flex-start;
+     overflow: hidden;
+/*    display: none;*/
+}
+
+main section:nth-of-type(2) > section > article:nth-of-type(1) {
+    position: relative;
+    display: inline-block;
+    width: 45vw;
     height: 100vh;
+    background-color: #EFEBEC;
+}
+
+main section:nth-of-type(2) > section > article:nth-of-type(1) > p {
+    font-family: "Stymie";
+    font-size: 4rem; 
+    text-transform: uppercase;
+    color: #F83B3F;
+    
+    position: absolute;
+    text-align: left;
+    left: -3.5rem;
+    bottom: 12rem;
+    transform: rotate(270deg);
+    
+}
+
+main section:nth-of-type(2) > section > article:nth-of-type(1) > img:nth-of-type(1) {
+    position: absolute;
+    height: 770px;
+    left: 3rem;
+    top: 6rem;
+    z-index: 10;
+     -webkit-filter: drop-shadow(15px 0px 25px rgba(0,0,0,0.25));
+}
+
+main section:nth-of-type(2) > section > article:nth-of-type(1) > div {
+    position: absolute;
+    left: 55%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+    text-align: left;
+    color: #17242E;
+}
+
+main section:nth-of-type(2) > section > article:nth-of-type(1) > div h3 {
+    margin-bottom: .5rem;
+}
+
+main section:nth-of-type(2) > section > article:nth-of-type(1) > div p {
+    margin-bottom: 1.3rem;
+}
+
+main section:nth-of-type(2) > section > article:nth-of-type(1) > img:nth-of-type(2) {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: -2.2rem;
+    
+}
+
+main section:nth-of-type(2) > section > article:nth-of-type(2) {
+    position: relative;
+    display: inline-block;
+    width: 55vw;
+    height: 100vh;
+text-align: center;
+}
+
+main section:nth-of-type(2) > section > article:nth-of-type(2) > div {
+     margin: auto;
+    margin-top: 10rem;
+    display: inline-block;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+main section:nth-of-type(2) > section > article:nth-of-type(2) > div h3 {
+    margin-bottom: .5rem;  
+    position: relative;
+    display: inline-block;
+        color: #EFEBEC;
+}
+
+main section:nth-of-type(2) > section > article:nth-of-type(2) > div h3::before {
+        content: url(../images/divider-white.svg);
+    position: absolute;
+    top: -5px;
+    left: -165px;
+    width: 145px;
+}
+
+main section:nth-of-type(2) > section > article:nth-of-type(2) > div h3::after {
+        content: url(../images/divider-white2.svg);
+    position: absolute;
+    top: -5px;
+    right: -165px;
+    width: 145px;
+}
+
+main section:nth-of-type(2) > section > article:nth-of-type(2) > div h1 {
+     color: #EFEBEC;
+}
+
+main section:nth-of-type(2) > section > article:nth-of-type(2) > img:nth-of-type(1) {
+    width: 40rem;
+    position: absolute;
+    bottom: 0;
+    right: -15rem;
+}
+
+main section:nth-of-type(2) > section > article:nth-of-type(2) > h3 {
+    position: relative;
+    display: block;
+    margin: auto;
+    color: #EFEBEC;
+    margin-bottom: 1.5rem;
+    z-index: 10;
+}
+
+main section:nth-of-type(2) > section > article:nth-of-type(2) > p {
+    position: relative;
+    display: block;
+    margin: auto;
+    color: #EFEBEC;
+    width: 20rem;
+}
+
+main section:nth-of-type(2) > section > article:nth-of-type(2) > img:nth-of-type(2) {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: -45vw;
+    z-index: -10;
+    width: 100vw;
+}
+
+/*MAIN SETTINGS*/
+
+.settingsection {
+  min-height: 100vh;
+}
+  .settingsection--sticky {
+    min-height: 300vh;
+  }
+
+
+.sticky {
+  display: block;
+  position: sticky;
+  top: 0;
+  min-height: 100vh;
+  background-color: #EFEBEC;
+  padding: 0;   
+}
+
+.sticky article:nth-of-type(1) {
+    text-align: center;
+    position: absolute;
+    z-index: 20;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: #EFEBEC;
+    opacity: 1;
+    transition: .5s;
+}
+
+.sticky article:nth-of-type(1).hidesettingstitle {
+    opacity: 0;
+}
+
+.sticky article:nth-of-type(1)::before {
+    content: url(../images/divider-white-up.svg);
+        position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    top: -160px;
+    width: 10px;
+}
+
+.sticky article:nth-of-type(1)::after {
+    content: url(../images/divider-white-down.svg);
+        position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    bottom: -160px;
+    width: 10px;
+}
+
+.settingtwo-sticky article:nth-of-type(1) {
+  color: #17242E;  
+}
+
+.settingtwo-sticky article:nth-of-type(1)::before {
+    content: url(../images/divider-black-up.svg);
+}
+
+.settingtwo-sticky article:nth-of-type(1)::after {
+    content: url(../images/divider-black-down.svg);
+}
+
+.sticky article:nth-of-type(2) {
+    position: absolute;
+    bottom: 0;
+    padding: 3rem 6rem 3rem 6rem;
+    width: 100%;
+    z-index: 10;
+    opacity: 0;
+    transition: .5s;
+}
+
+.sticky article:nth-of-type(2).showsettinginfo {
+    opacity: 1;
+}
+
+.sticky article:nth-of-type(2) h3 {
+    text-align: right;
+    color: #EFEBEC;
+    margin-bottom: 3rem;
+}
+
+.sticky article:nth-of-type(2) h3 span {
+    font-size: 1rem;
+}
+
+.sticky article:nth-of-type(2) > div:nth-of-type(1) {
+    display: inline-block;
+    width: calc(100% - 50px);
+    height: 3px;
+    background-color: #EFEBEC;
+    margin-bottom: 3rem;
+}
+
+.sticky article:nth-of-type(2) > img {
+    display: inline-block;
+    float: right;
+    width: 30px;
+        margin-top: -3px;
+}
+.sticky article:nth-of-type(2) div:nth-of-type(2) {
+    display: inline-block;
+    text-align: center;
+    margin-left: 4rem;
+}
+
+.sticky article:nth-of-type(2) div:nth-of-type(2) h3 {
+    margin-bottom: .5rem;  
+    position: relative;
+    display: inline-block;
+}
+
+.sticky article:nth-of-type(2) div:nth-of-type(2) h3::before {
+        content: url(../images/divider-white.svg);
+    position: absolute;
+    top: -5px;
+    left: -165px;
+    width: 145px;
+}
+
+.sticky article:nth-of-type(2) div:nth-of-type(2) h3::after {
+        content: url(../images/divider-white2.svg);
+    position: absolute;
+    top: -5px;
+    right: -165px;
+    width: 145px;
+}
+
+.sticky article:nth-of-type(2) div:nth-of-type(2) h2 {
+    color: #EFEBEC;
+}
+
+.sticky article:nth-of-type(2) p {
+    float: right;
+    color: #EFEBEC;
+    display: inline-block;
+    text-align: right;
+    width: 30%;
+}
+
+  .sticky--figure {
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    bottom: 0;
+    overflow: hidden;
+  }
+
+main section:nth-of-type(3) .sticky--figure {
+    -webkit-mask-image: url(../images/Grunge-mask2.svg);
+    -moz-mask-image: url(../images/Grunge-mask2.svg);
+    -o-mask-image: url(../images/Grunge-mask2.svg);
+    mask-image: url(../images/Grunge-mask2.svg);
+    -webkit-mask-size: 100vw;
+    -webkit-mask-repeat: no-repeat;
+  }
+
+
+  .sticky--figure > img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    transform: scale(2.5);
+  }
+
+  .settingtwo-figure > img {
+    object-fit: cover;
+      object-position: 55% 50%;
+  }

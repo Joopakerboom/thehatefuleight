@@ -113,15 +113,74 @@ var headerNav = document.querySelector('header nav');
 function showNav() {
     headerNav.classList.add("shownav");
     headerLogo.classList.add("shownav");
+    headerLogo.classList.remove("changecolorlogo");
 }
 
-function hideNav() {
-    headerNav.classList.remove("shownav");
-    headerLogo.classList.remove("shownav");
-}
+//function hideNav() {
+//    headerNav.classList.remove("shownav");
+//    headerLogo.classList.remove("shownav");
+//}
 
 headerTitle.addEventListener("mouseover", showNav);
-headerNav.addEventListener("mouseout", hideNav);
+//headerNav.addEventListener("mouseout", hideNav);
+
+function hideNav(elem){
+    var list = traverseChildren(elem);
+    return function onMouseOut(event) {
+        var e = event.toElement || event.relatedTarget;
+        if (!!~list.indexOf(e)) {
+            return;
+        }
+        headerNav.classList.remove("shownav");
+    headerLogo.classList.remove("shownav");
+};
+}
+    headerNav.addEventListener('mouseout', hideNav(headerNav), true);
+                                                                                                                     
+//quick and dirty BFS children traversal, Im sure you could find a better one                                        
+function traverseChildren(elem){
+    var children = [];
+    var q = [];
+    q.push(elem);
+    while (q.length>0)
+    {
+        var elem = q.pop();
+        children.push(elem);
+        pushAll(elem.children);
+    }
+        function pushAll(elemArray){
+            for(var i=0;i<elemArray.length;i++)
+            {
+                q.push(elemArray[i]);
+            }
+            
+        }
+        return children;
+}
+
+
+// COLOR CHANGE FUNCTION
+
+window.addEventListener("scroll", function () {
+    var hoogte = window.pageYOffset + window.innerHeight;
+        console.log(hoogte);
+    if (hoogte >= 1000) {
+    headerLogo.classList.add("changecolorlogo");
+      headerTitle.classList.add("changecolor1");
+        gunBarrel.classList.add("changecolorgun");
+  }
+    
+     else {
+    headerLogo.classList.remove("changecolorlogo");
+           headerTitle.classList.remove("changecolor1");
+         gunBarrel.classList.remove("changecolorgun");
+  }
+    
+    if (hoogte >= 2000) {
+    headerTitle.classList.remove("changecolor1"); 
+        gunBarrel.classList.remove("changecolorgun");
+  }
+});
 
 // STORY SELECT
 
@@ -171,7 +230,7 @@ storyBullet3.addEventListener("click", oneDirectorShow);
 
 // CHARACTER SELECT
 
-var characterKnockOut = document.querySelector('main section:nth-of-type(2) h1');
+var characterKnockOut = document.querySelector('main section:nth-of-type(2) div:nth-of-type(2) h1');
 
 var characterName = document.querySelector('main section:nth-of-type(2) div:nth-of-type(1) h2');
 
@@ -307,24 +366,68 @@ characterChoice8.addEventListener("mouseover", changeCharacterEight);
 
 // SETTINGS FUNCTION
 
-var intro = document.querySelector('main section:nth-of-type(3)');
-var docHeight = intro.offsetHeight;
+var section = document.querySelector('.settingsection--sticky');
+var sectionSetting1 = document.querySelector('.sticky article:nth-of-type(1)');
+var sectionSetting2 = document.querySelector('.sticky article:nth-of-type(2)');
+var img = document.querySelector('.sticky--figure > img');
 
-var setting1 = document.querySelector('main section:nth-of-type(3) img');
+window.addEventListener('scroll', function() {
+  var top = section.getBoundingClientRect().top
+  console.log(top);
+  if (top <= 0) {
+    img.style = 'transform: scale(' + ((top / 1000) + 2.5) + ');';
+  } else {
+    img.style = '';
+  }
+    
+     if (top <= -950) {
+   sectionSetting1.classList.add("hidesettingstitle");
+  }
+    else {
+      sectionSetting1.classList.remove("hidesettingstitle");
+  }
+    
+    if (top <= -1350) {
+   sectionSetting2.classList.add("showsettinginfo");
+  }
+    else {
+      sectionSetting2.classList.remove("showsettinginfo");
+  }
+    
+    if (top <= -1370) {
+    img.style = 'transform: scale(1.13)';
+    }
+});
 
-window.addEventListener('load', function () {
-    window.addEventListener('scroll', function () {
-        
-//        var scrolled = window.scrollY / (docHeight - window.innerHeight) + 1;
-//        var transformValue = 'translateX(-50%) scale(' + scrolled + ')';
-//        
-//               console.log(transformValue)
-//        
-//        setting1.style.transform = transformValue;
-        
-    }, false);
+var section2 = document.querySelector('.settingtwo');
+var sectionSettingTwo1 = document.querySelector('.settingtwo-sticky article:nth-of-type(1)');
+var sectionSettingTwo2 = document.querySelector('.settingtwo-sticky article:nth-of-type(2)');
+var img2 = document.querySelector('.settingtwo-figure > img');
 
-}, false);
+window.addEventListener('scroll', function() {
+  var top2 = section2.getBoundingClientRect().top
+//  console.log(top2);
+  if (top2 <= 0) {
+    img2.style = 'transform: scale(' + ((top2 / 1000) + 2.5) + ');';
+  } else {
+    img2.style = '';
+  }
+    
+     if (top2 <= -950) {
+   sectionSettingTwo1.classList.add("hidesettingstitle");
+  }
+    else {
+ sectionSettingTwo1.classList.remove("hidesettingstitle");
+  }
+    
+    if (top2 <= -1350) {
+   sectionSettingTwo2.classList.add("showsettinginfo");
+  }
+    else {
+      sectionSettingTwo2.classList.remove("showsettinginfo");
+  }
+});
+
 
 //SNOW FUNCION
 
