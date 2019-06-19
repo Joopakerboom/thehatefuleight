@@ -1,3 +1,10 @@
+// ON RELOAD SCROLL TO TOP
+window.onload = function() {
+ setTimeout (function () {
+  scrollTo(0,0);
+ }, 100);
+}
+
 // CURSOR
 const cursor = document.querySelector('.cursor');
 
@@ -32,14 +39,17 @@ var outOfBullets = document.querySelector('body > section:nth-of-type(2)');
 function myBullets() {
     bullets++;
 //    console.log(bullets);
+    cursor.classList.add("mouseclick");
+    
+    setTimeout(function () {
+            cursor.classList.remove("mouseclick");
+        }, 1000);
 
     if (bullets === 1) {
         bullet1.classList.add("usedbullet");
         gunBarrel.classList.add("usedbulletgun1");
         gunShot.play();
-        setTimeout(function () {
-            gunCock.play();
-    }, 700);
+        gunCock.play();
         
         headerBullet1.classList.add("usedbullet");
     }
@@ -48,9 +58,8 @@ function myBullets() {
         bullet2.classList.add("usedbullet");
         gunBarrel.classList.add("usedbulletgun2");
         gunShot.play();
-        setTimeout(function () {
-            gunCock.play();
-    }, 700);
+        gunCock.play();
+        
         headerBullet2.classList.add("usedbullet");
     }
 
@@ -58,9 +67,8 @@ function myBullets() {
         bullet3.classList.add("usedbullet");
         gunBarrel.classList.add("usedbulletgun3");
         gunShot.play();
-        setTimeout(function () {
-            gunCock.play();
-    }, 700);
+        gunCock.play();
+        
         headerBullet3.classList.add("usedbullet");
     }
 
@@ -68,9 +76,8 @@ function myBullets() {
         bullet4.classList.add("usedbullet");
         gunBarrel.classList.add("usedbulletgun4");
         gunShot.play();
-        setTimeout(function () {
-            gunCock.play();
-    }, 700);
+        gunCock.play();
+        
         headerBullet4.classList.add("usedbullet");
     }
 
@@ -78,9 +85,8 @@ function myBullets() {
         bullet5.classList.add("usedbullet");
         gunBarrel.classList.add("usedbulletgun5");
         gunShot.play();
-        setTimeout(function () {
-            gunCock.play();
-    }, 700);
+        gunCock.play();
+        
         headerBullet5.classList.add("usedbullet");
     }
 
@@ -88,9 +94,8 @@ function myBullets() {
         bullet6.classList.add("usedbullet");
         gunBarrel.classList.add("usedbulletgun6");
         gunShot.play();
-        setTimeout(function () {
-            gunCock.play();
-    }, 700);
+        gunCock.play();
+        
         headerBullet6.classList.add("usedbullet");
     }
 
@@ -98,9 +103,8 @@ function myBullets() {
         bullet7.classList.add("usedbullet");
         gunBarrel.classList.add("usedbulletgun7");
         gunShot.play();
-        setTimeout(function () {
-            gunCock.play();
-    }, 700);
+        gunCock.play();
+        
         headerBullet7.classList.add("usedbullet");
     }
 
@@ -108,9 +112,8 @@ function myBullets() {
         bullet8.classList.add("usedbullet");
         gunBarrel.classList.add("usedbulletgun8");
         gunShot.play();
-        setTimeout(function () {
-            gunCock.play();
-    }, 700);
+        gunCock.play();
+        
         headerBullet8.classList.add("usedbullet");
 
         setTimeout(function () {
@@ -125,55 +128,65 @@ body.addEventListener("click", myBullets);
 // NAVIGATION
 
 var headerLogo = document.querySelector('header svg:nth-of-type(1)');
-var headerTitle = document.querySelector('header a');
+var headerOpen = document.querySelector('header button:nth-of-type(1)');
+var headerExit = document.querySelector('header button:nth-of-type(2)');
 var headerNav = document.querySelector('header nav');
 
 function showNav() {
     headerNav.classList.add("shownav");
     headerLogo.classList.add("shownav");
     headerLogo.classList.remove("changecolorlogo");
+    
+    cursor.classList.add("mousewhite");
+    
+    headerOpen.classList.add("hideheaderopen");
+    headerExit.classList.add("revealheaderexit");
 }
 
-//function hideNav() {
-//    headerNav.classList.remove("shownav");
-//    headerLogo.classList.remove("shownav");
+function hideNav() {
+    headerNav.classList.remove("shownav");
+    headerLogo.classList.remove("shownav");
+    cursor.classList.remove("mousewhite");
+    
+    headerOpen.classList.remove("hideheaderopen");
+    headerExit.classList.remove("revealheaderexit");
+}
+
+headerOpen.addEventListener("click", showNav);
+headerExit.addEventListener("click", hideNav);
+
+//function hideNav(elem) {
+//    var list = traverseChildren(elem);
+//    return function onMouseOut(event) {
+//        var e = event.toElement || event.relatedTarget;
+//        if (!!~list.indexOf(e)) {
+//            return;
+//        }
+//        headerNav.classList.remove("shownav");
+//        headerLogo.classList.remove("shownav");
+//    };
 //}
-
-headerTitle.addEventListener("mouseover", showNav);
-//headerNav.addEventListener("mouseout", hideNav);
-
-function hideNav(elem) {
-    var list = traverseChildren(elem);
-    return function onMouseOut(event) {
-        var e = event.toElement || event.relatedTarget;
-        if (!!~list.indexOf(e)) {
-            return;
-        }
-        headerNav.classList.remove("shownav");
-        headerLogo.classList.remove("shownav");
-    };
-}
-headerNav.addEventListener('mouseout', hideNav(headerNav), true);
-
-//quick and dirty BFS children traversal, Im sure you could find a better one                                        
-function traverseChildren(elem) {
-    var children = [];
-    var q = [];
-    q.push(elem);
-    while (q.length > 0) {
-        var elem = q.pop();
-        children.push(elem);
-        pushAll(elem.children);
-    }
-
-    function pushAll(elemArray) {
-        for (var i = 0; i < elemArray.length; i++) {
-            q.push(elemArray[i]);
-        }
-
-    }
-    return children;
-}
+//headerNav.addEventListener('mouseout', hideNav(headerNav), true);
+//
+////quick and dirty BFS children traversal, Im sure you could find a better one                                        
+//function traverseChildren(elem) {
+//    var children = [];
+//    var q = [];
+//    q.push(elem);
+//    while (q.length > 0) {
+//        var elem = q.pop();
+//        children.push(elem);
+//        pushAll(elem.children);
+//    }
+//
+//    function pushAll(elemArray) {
+//        for (var i = 0; i < elemArray.length; i++) {
+//            q.push(elemArray[i]);
+//        }
+//
+//    }
+//    return children;
+//}
 
 
 // COLOR CHANGE FUNCTION
@@ -183,16 +196,16 @@ window.addEventListener("scroll", function () {
 //    console.log(hoogte);
     if (hoogte >= 1000) {
         headerLogo.classList.add("changecolorlogo");
-        headerTitle.classList.add("changecolor1");
+        headerOpen.classList.add("changecolor1");
         gunBarrel.classList.add("changecolorgun");
     } else {
         headerLogo.classList.remove("changecolorlogo");
-        headerTitle.classList.remove("changecolor1");
+        headerOpen.classList.remove("changecolor1");
         gunBarrel.classList.remove("changecolorgun");
     }
 
     if (hoogte >= 2000) {
-        headerTitle.classList.remove("changecolor1");
+        headerOpen.classList.remove("changecolor1");
         gunBarrel.classList.remove("changecolorgun");
     }
 });
@@ -351,7 +364,7 @@ function changeCharacterSeven() {
 
 function changeCharacterEight() {
     characterKnockOut.classList.add("hatefuleight");
-    characterName.innerHTML = "Confederate";
+    characterName.innerHTML = "General";
 
     characterKnockOut.classList.remove("hatefulone");
     characterKnockOut.classList.remove("hatefultwo");
@@ -416,6 +429,42 @@ var characterChoice4Detail6 = document.querySelector('main section:nth-of-type(2
 var characterChoice4Detail7 = document.querySelector('main section:nth-of-type(2) > section:nth-of-type(4) > article:nth-of-type(2) > div:nth-of-type(2)');
 var characterChoice4Detail8 = document.querySelector('main section:nth-of-type(2) > section:nth-of-type(4) > article:nth-of-type(2) > img:nth-of-type(2)');
 
+var characterChoice5Detail = document.querySelector('main section:nth-of-type(2) > section:nth-of-type(5)');
+var characterChoice5Detail2 = document.querySelector('main section:nth-of-type(2) > section:nth-of-type(5) > article:nth-of-type(1)');
+var characterChoice5Detail3 = document.querySelector('main section:nth-of-type(2) > section:nth-of-type(5) > article:nth-of-type(2) > div:nth-of-type(1)');
+var characterChoice5Detail4 = document.querySelector('main section:nth-of-type(2) > section:nth-of-type(5) > article:nth-of-type(2) > img:nth-of-type(1)');
+var characterChoice5Detail5 = document.querySelector('main section:nth-of-type(2) > section:nth-of-type(5) > article:nth-of-type(2) > h3');
+var characterChoice5Detail6 = document.querySelector('main section:nth-of-type(2) > section:nth-of-type(5) > article:nth-of-type(2) > p');
+var characterChoice5Detail7 = document.querySelector('main section:nth-of-type(2) > section:nth-of-type(5) > article:nth-of-type(2) > div:nth-of-type(2)');
+var characterChoice5Detail8 = document.querySelector('main section:nth-of-type(2) > section:nth-of-type(5) > article:nth-of-type(2) > img:nth-of-type(2)');
+
+var characterChoice6Detail = document.querySelector('main section:nth-of-type(2) > section:nth-of-type(6)');
+var characterChoice6Detail2 = document.querySelector('main section:nth-of-type(2) > section:nth-of-type(6) > article:nth-of-type(1)');
+var characterChoice6Detail3 = document.querySelector('main section:nth-of-type(2) > section:nth-of-type(6) > article:nth-of-type(2) > div:nth-of-type(1)');
+var characterChoice6Detail4 = document.querySelector('main section:nth-of-type(2) > section:nth-of-type(6) > article:nth-of-type(2) > img:nth-of-type(1)');
+var characterChoice6Detail5 = document.querySelector('main section:nth-of-type(2) > section:nth-of-type(6) > article:nth-of-type(2) > h3');
+var characterChoice6Detail6 = document.querySelector('main section:nth-of-type(2) > section:nth-of-type(6) > article:nth-of-type(2) > p');
+var characterChoice6Detail7 = document.querySelector('main section:nth-of-type(2) > section:nth-of-type(6) > article:nth-of-type(2) > div:nth-of-type(2)');
+var characterChoice6Detail8 = document.querySelector('main section:nth-of-type(2) > section:nth-of-type(6) > article:nth-of-type(2) > img:nth-of-type(2)');
+
+var characterChoice7Detail = document.querySelector('main section:nth-of-type(2) > section:nth-of-type(7)');
+var characterChoice7Detail2 = document.querySelector('main section:nth-of-type(2) > section:nth-of-type(7) > article:nth-of-type(1)');
+var characterChoice7Detail3 = document.querySelector('main section:nth-of-type(2) > section:nth-of-type(7) > article:nth-of-type(2) > div:nth-of-type(1)');
+var characterChoice7Detail4 = document.querySelector('main section:nth-of-type(2) > section:nth-of-type(7) > article:nth-of-type(2) > img:nth-of-type(1)');
+var characterChoice7Detail5 = document.querySelector('main section:nth-of-type(2) > section:nth-of-type(7) > article:nth-of-type(2) > h3');
+var characterChoice7Detail6 = document.querySelector('main section:nth-of-type(2) > section:nth-of-type(7) > article:nth-of-type(2) > p');
+var characterChoice7Detail7 = document.querySelector('main section:nth-of-type(2) > section:nth-of-type(7) > article:nth-of-type(2) > div:nth-of-type(2)');
+var characterChoice7Detail8 = document.querySelector('main section:nth-of-type(2) > section:nth-of-type(7) > article:nth-of-type(2) > img:nth-of-type(2)');
+
+var characterChoice8Detail = document.querySelector('main section:nth-of-type(2) > section:nth-of-type(8)');
+var characterChoice8Detail2 = document.querySelector('main section:nth-of-type(2) > section:nth-of-type(8) > article:nth-of-type(1)');
+var characterChoice8Detail3 = document.querySelector('main section:nth-of-type(2) > section:nth-of-type(8) > article:nth-of-type(2) > div:nth-of-type(1)');
+var characterChoice8Detail4 = document.querySelector('main section:nth-of-type(2) > section:nth-of-type(8) > article:nth-of-type(2) > img:nth-of-type(1)');
+var characterChoice8Detail5 = document.querySelector('main section:nth-of-type(2) > section:nth-of-type(8) > article:nth-of-type(2) > h3');
+var characterChoice8Detail6 = document.querySelector('main section:nth-of-type(2) > section:nth-of-type(8) > article:nth-of-type(2) > p');
+var characterChoice8Detail7 = document.querySelector('main section:nth-of-type(2) > section:nth-of-type(8) > article:nth-of-type(2) > div:nth-of-type(2)');
+var characterChoice8Detail8 = document.querySelector('main section:nth-of-type(2) > section:nth-of-type(8) > article:nth-of-type(2) > img:nth-of-type(2)');
+
 function changeCharacterOneDetail() {
     characterChoice1Detail.classList.add("opendetail");
     characterChoice1Detail2.classList.add("characterdetailintro1");
@@ -429,7 +478,7 @@ function changeCharacterOneDetail() {
     body.classList.add("no-scroll");
 
     headerLogo.classList.add("changecolorlogo");
-    headerTitle.classList.remove("changecolor1");
+    headerOpen.classList.remove("changecolor1");
     gunBarrel.classList.remove("changecolorgun");
 }
 
@@ -446,7 +495,7 @@ function changeCharacterTwoDetail() {
     body.classList.add("no-scroll");
 
     headerLogo.classList.add("changecolorlogo");
-    headerTitle.classList.remove("changecolor1");
+    headerOpen.classList.remove("changecolor1");
     gunBarrel.classList.remove("changecolorgun");
 }
 
@@ -462,7 +511,7 @@ function changeCharacterThreeDetail() {
     body.classList.add("no-scroll");
 
     headerLogo.classList.add("changecolorlogo");
-    headerTitle.classList.remove("changecolor1");
+    headerOpen.classList.remove("changecolor1");
     gunBarrel.classList.remove("changecolorgun");
 }
 
@@ -478,17 +527,72 @@ function changeCharacterFourDetail() {
     body.classList.add("no-scroll");
 
     headerLogo.classList.add("changecolorlogo");
-    headerTitle.classList.remove("changecolor1");
+    headerOpen.classList.remove("changecolor1");
     gunBarrel.classList.remove("changecolorgun");
 }
 
-function changeCharacterDetailExit() {
-    characterChoice4Detail.style.display = "none";
-    body.classList.remove("no-scroll");
+function changeCharacterFiveDetail() {
+    characterChoice5Detail.classList.add("opendetail");
+    characterChoice5Detail2.classList.add("characterdetailintro1");
+    characterChoice5Detail3.classList.add("characterdetailintro2");
+    characterChoice5Detail4.classList.add("characterdetailintro2");
+    characterChoice5Detail5.classList.add("characterdetailintro2");
+    characterChoice5Detail6.classList.add("characterdetailintro2");
+    characterChoice5Detail7.classList.add("characterdetailintro2");
+    characterChoice5Detail8.classList.add("characterdetailintro3");
+    body.classList.add("no-scroll");
 
-    headerLogo.classList.remove("changecolorlogo");
-    headerTitle.classList.add("changecolor1");
-    gunBarrel.classList.add("changecolorgun");
+    headerLogo.classList.add("changecolorlogo");
+    headerOpen.classList.remove("changecolor1");
+    gunBarrel.classList.remove("changecolorgun");
+}
+
+function changeCharacterSixDetail() {
+    characterChoice6Detail.classList.add("opendetail");
+    characterChoice6Detail2.classList.add("characterdetailintro1");
+    characterChoice6Detail3.classList.add("characterdetailintro2");
+    characterChoice6Detail4.classList.add("characterdetailintro2");
+    characterChoice6Detail5.classList.add("characterdetailintro2");
+    characterChoice6Detail6.classList.add("characterdetailintro2");
+    characterChoice6Detail7.classList.add("characterdetailintro2");
+    characterChoice6Detail8.classList.add("characterdetailintro3");
+    body.classList.add("no-scroll");
+
+    headerLogo.classList.add("changecolorlogo");
+    headerOpen.classList.remove("changecolor1");
+    gunBarrel.classList.remove("changecolorgun");
+}
+
+function changeCharacterSevenDetail() {
+    characterChoice7Detail.classList.add("opendetail");
+    characterChoice7Detail2.classList.add("characterdetailintro1");
+    characterChoice7Detail3.classList.add("characterdetailintro2");
+    characterChoice7Detail4.classList.add("characterdetailintro2");
+    characterChoice7Detail5.classList.add("characterdetailintro2");
+    characterChoice7Detail6.classList.add("characterdetailintro2");
+    characterChoice7Detail7.classList.add("characterdetailintro2");
+    characterChoice7Detail8.classList.add("characterdetailintro3");
+    body.classList.add("no-scroll");
+
+    headerLogo.classList.add("changecolorlogo");
+    headerOpen.classList.remove("changecolor1");
+    gunBarrel.classList.remove("changecolorgun");
+}
+
+function changeCharacterEightDetail() {
+    characterChoice8Detail.classList.add("opendetail");
+    characterChoice8Detail2.classList.add("characterdetailintro1");
+    characterChoice8Detail3.classList.add("characterdetailintro2");
+    characterChoice8Detail4.classList.add("characterdetailintro2");
+    characterChoice8Detail5.classList.add("characterdetailintro2");
+    characterChoice8Detail6.classList.add("characterdetailintro2");
+    characterChoice8Detail7.classList.add("characterdetailintro2");
+    characterChoice8Detail8.classList.add("characterdetailintro3");
+    body.classList.add("no-scroll");
+
+    headerLogo.classList.add("changecolorlogo");
+    headerOpen.classList.remove("changecolor1");
+    gunBarrel.classList.remove("changecolorgun");
 }
 
 characterChoice1.addEventListener("click", changeCharacterOneDetail);
@@ -499,19 +603,27 @@ characterChoice3.addEventListener("click", changeCharacterThreeDetail);
 
 characterChoice4.addEventListener("click", changeCharacterFourDetail);
 
+characterChoice5.addEventListener("click", changeCharacterFiveDetail);
+
+characterChoice6.addEventListener("click", changeCharacterSixDetail);
+
+characterChoice7.addEventListener("click", changeCharacterSevenDetail);
+
+characterChoice8.addEventListener("click", changeCharacterEightDetail);
+
 const characterChoiceExit = document.querySelectorAll("main section:nth-of-type(2) > section > article:nth-of-type(2) > div:nth-of-type(2) button:nth-of-type(2)");
 
 for (let i = 0; i < characterChoiceExit.length; i++) {
     characterChoiceExit[i].addEventListener("click", function () {
-//        characterChoice1Detail.style.display = "none";
-//        characterChoice2Detail.style.display = "none";
-//        characterChoice3Detail.style.display = "none";
-//        characterChoice4Detail.style.display = "none";
         
         characterChoice1Detail.classList.add("exitdetail");
         characterChoice2Detail.classList.add("exitdetail");
         characterChoice3Detail.classList.add("exitdetail");
         characterChoice4Detail.classList.add("exitdetail");
+        characterChoice5Detail.classList.add("exitdetail");
+        characterChoice6Detail.classList.add("exitdetail");
+        characterChoice7Detail.classList.add("exitdetail");
+        characterChoice8Detail.classList.add("exitdetail");
         
         setTimeout(function () {
             characterChoice1Detail.classList.remove("opendetail");
@@ -525,16 +637,400 @@ for (let i = 0; i < characterChoiceExit.length; i++) {
             
             characterChoice4Detail.classList.remove("opendetail");
             characterChoice4Detail.classList.remove("exitdetail");
+            
+            characterChoice5Detail.classList.remove("opendetail");
+            characterChoice5Detail.classList.remove("exitdetail");
+            
+            characterChoice6Detail.classList.remove("opendetail");
+            characterChoice6Detail.classList.remove("exitdetail");
+            
+            characterChoice7Detail.classList.remove("opendetail");
+            characterChoice7Detail.classList.remove("exitdetail");
+            
+            characterChoice8Detail.classList.remove("opendetail");
+            characterChoice8Detail.classList.remove("exitdetail");
     }, 1500);
 
         
         body.classList.remove("no-scroll");
 
         headerLogo.classList.remove("changecolorlogo");
-        headerTitle.classList.add("changecolor1");
+        headerOpen.classList.add("changecolor1");
         gunBarrel.classList.add("changecolorgun");
     });
 }
+
+//NEXT/ PREV CHARACTER
+
+var characterChoicePrev1 = document.querySelector("main section:nth-of-type(2) > section:nth-of-type(1) > article:nth-of-type(2) > div:nth-of-type(2) button:nth-of-type(1)");
+
+var characterChoicePrev2 = document.querySelector("main section:nth-of-type(2) > section:nth-of-type(2) > article:nth-of-type(2) > div:nth-of-type(2) button:nth-of-type(1)");
+
+var characterChoicePrev3 = document.querySelector("main section:nth-of-type(2) > section:nth-of-type(3) > article:nth-of-type(2) > div:nth-of-type(2) button:nth-of-type(1)");
+
+var characterChoicePrev4 = document.querySelector("main section:nth-of-type(2) > section:nth-of-type(4) > article:nth-of-type(2) > div:nth-of-type(2) button:nth-of-type(1)");
+
+var characterChoicePrev5 = document.querySelector("main section:nth-of-type(2) > section:nth-of-type(5) > article:nth-of-type(2) > div:nth-of-type(2) button:nth-of-type(1)");
+
+var characterChoicePrev6 = document.querySelector("main section:nth-of-type(2) > section:nth-of-type(6) > article:nth-of-type(2) > div:nth-of-type(2) button:nth-of-type(1)");
+
+var characterChoicePrev7 = document.querySelector("main section:nth-of-type(2) > section:nth-of-type(7) > article:nth-of-type(2) > div:nth-of-type(2) button:nth-of-type(1)");
+
+var characterChoicePrev8 = document.querySelector("main section:nth-of-type(2) > section:nth-of-type(8) > article:nth-of-type(2) > div:nth-of-type(2) button:nth-of-type(1)");
+
+function characterOnePrev() {
+    characterChoice8Detail.classList.add("opendetail");
+    characterChoice8Detail2.classList.add("characterdetailintro1");
+    characterChoice8Detail3.classList.add("characterdetailintro2");
+    characterChoice8Detail4.classList.add("characterdetailintro2");
+    characterChoice8Detail5.classList.add("characterdetailintro2");
+    characterChoice8Detail6.classList.add("characterdetailintro2");
+    characterChoice8Detail7.classList.add("characterdetailintro2");
+    characterChoice8Detail8.classList.add("characterdetailintro3");
+    
+    body.classList.add("no-scroll");
+
+    characterChoice1Detail.classList.add("exitdetail");
+    
+    setTimeout(function () {
+            characterChoice1Detail.classList.remove("opendetail");
+            characterChoice1Detail.classList.remove("exitdetail");
+    }, 1500);
+}
+
+function characterTwoPrev() {
+    characterChoice1Detail.classList.add("opendetail");
+    characterChoice1Detail2.classList.add("characterdetailintro1");
+    characterChoice1Detail3.classList.add("characterdetailintro2");
+    characterChoice1Detail4.classList.add("characterdetailintro2");
+    characterChoice1Detail5.classList.add("characterdetailintro2");
+    characterChoice1Detail6.classList.add("characterdetailintro2");
+    characterChoice1Detail7.classList.add("characterdetailintro2");
+    characterChoice1Detail8.classList.add("characterdetailintro3");
+    
+    body.classList.add("no-scroll");
+
+    characterChoice2Detail.classList.add("exitdetail");
+    
+    setTimeout(function () {
+            characterChoice2Detail.classList.remove("opendetail");
+            characterChoice2Detail.classList.remove("exitdetail");
+    }, 1500);
+}
+
+function characterThreePrev() {
+    characterChoice2Detail.classList.add("opendetail");
+    characterChoice2Detail2.classList.add("characterdetailintro1");
+    characterChoice2Detail3.classList.add("characterdetailintro2");
+    characterChoice2Detail4.classList.add("characterdetailintro2");
+    characterChoice2Detail5.classList.add("characterdetailintro2");
+    characterChoice2Detail6.classList.add("characterdetailintro2");
+    characterChoice2Detail7.classList.add("characterdetailintro2");
+    characterChoice2Detail8.classList.add("characterdetailintro3");
+    
+    body.classList.add("no-scroll");
+
+    characterChoice3Detail.classList.add("exitdetail");
+    
+    setTimeout(function () {
+            characterChoice3Detail.classList.remove("opendetail");
+            characterChoice3Detail.classList.remove("exitdetail");
+    }, 1500);
+}
+
+function characterFourPrev() {
+    characterChoice3Detail.classList.add("opendetail");
+    characterChoice3Detail2.classList.add("characterdetailintro1");
+    characterChoice3Detail3.classList.add("characterdetailintro2");
+    characterChoice3Detail4.classList.add("characterdetailintro2");
+    characterChoice3Detail5.classList.add("characterdetailintro2");
+    characterChoice3Detail6.classList.add("characterdetailintro2");
+    characterChoice3Detail7.classList.add("characterdetailintro2");
+    characterChoice3Detail8.classList.add("characterdetailintro3");
+    
+    body.classList.add("no-scroll");
+
+    characterChoice4Detail.classList.add("exitdetail");
+    
+    setTimeout(function () {
+            characterChoice4Detail.classList.remove("opendetail");
+            characterChoice4Detail.classList.remove("exitdetail");
+    }, 1500);
+}
+
+function characterFivePrev() {
+    characterChoice4Detail.classList.add("opendetail");
+    characterChoice4Detail2.classList.add("characterdetailintro1");
+    characterChoice4Detail3.classList.add("characterdetailintro2");
+    characterChoice4Detail4.classList.add("characterdetailintro2");
+    characterChoice4Detail5.classList.add("characterdetailintro2");
+    characterChoice4Detail6.classList.add("characterdetailintro2");
+    characterChoice4Detail7.classList.add("characterdetailintro2");
+    characterChoice4Detail8.classList.add("characterdetailintro3");
+    
+    body.classList.add("no-scroll");
+
+    characterChoice5Detail.classList.add("exitdetail");
+    
+    setTimeout(function () {
+            characterChoice5Detail.classList.remove("opendetail");
+            characterChoice5Detail.classList.remove("exitdetail");
+    }, 1500);
+}
+
+function characterSixPrev() {
+    characterChoice5Detail.classList.add("opendetail");
+    characterChoice5Detail2.classList.add("characterdetailintro1");
+    characterChoice5Detail3.classList.add("characterdetailintro2");
+    characterChoice5Detail4.classList.add("characterdetailintro2");
+    characterChoice5Detail5.classList.add("characterdetailintro2");
+    characterChoice5Detail6.classList.add("characterdetailintro2");
+    characterChoice5Detail7.classList.add("characterdetailintro2");
+    characterChoice5Detail8.classList.add("characterdetailintro3");
+    
+    body.classList.add("no-scroll");
+
+    characterChoice6Detail.classList.add("exitdetail");
+    
+    setTimeout(function () {
+            characterChoice6Detail.classList.remove("opendetail");
+            characterChoice6Detail.classList.remove("exitdetail");
+    }, 1500);
+}
+
+function characterSevenPrev() {
+    characterChoice6Detail.classList.add("opendetail");
+    characterChoice6Detail2.classList.add("characterdetailintro1");
+    characterChoice6Detail3.classList.add("characterdetailintro2");
+    characterChoice6Detail4.classList.add("characterdetailintro2");
+    characterChoice6Detail5.classList.add("characterdetailintro2");
+    characterChoice6Detail6.classList.add("characterdetailintro2");
+    characterChoice6Detail7.classList.add("characterdetailintro2");
+    characterChoice6Detail8.classList.add("characterdetailintro3");
+    
+    body.classList.add("no-scroll");
+
+    characterChoice7Detail.classList.add("exitdetail");
+    
+    setTimeout(function () {
+            characterChoice7Detail.classList.remove("opendetail");
+            characterChoice7Detail.classList.remove("exitdetail");
+    }, 1500);
+}
+
+function characterEightPrev() {
+    characterChoice7Detail.classList.add("opendetail");
+    characterChoice7Detail2.classList.add("characterdetailintro1");
+    characterChoice7Detail3.classList.add("characterdetailintro2");
+    characterChoice7Detail4.classList.add("characterdetailintro2");
+    characterChoice7Detail5.classList.add("characterdetailintro2");
+    characterChoice7Detail6.classList.add("characterdetailintro2");
+    characterChoice7Detail7.classList.add("characterdetailintro2");
+    characterChoice7Detail8.classList.add("characterdetailintro3");
+    
+    body.classList.add("no-scroll");
+
+    characterChoice8Detail.classList.add("exitdetail");
+    
+    setTimeout(function () {
+            characterChoice8Detail.classList.remove("opendetail");
+            characterChoice8Detail.classList.remove("exitdetail");
+    }, 1500);
+}
+
+characterChoicePrev1.addEventListener("click", characterOnePrev);
+characterChoicePrev2.addEventListener("click", characterTwoPrev);
+characterChoicePrev3.addEventListener("click", characterThreePrev);
+characterChoicePrev4.addEventListener("click", characterFourPrev);
+characterChoicePrev5.addEventListener("click", characterFivePrev);
+characterChoicePrev6.addEventListener("click", characterSixPrev);
+characterChoicePrev7.addEventListener("click", characterSevenPrev);
+characterChoicePrev8.addEventListener("click", characterEightPrev);
+
+var characterChoiceNext1 = document.querySelector("main section:nth-of-type(2) > section:nth-of-type(1) > article:nth-of-type(2) > div:nth-of-type(2) button:nth-of-type(3)");
+
+var characterChoiceNext2 = document.querySelector("main section:nth-of-type(2) > section:nth-of-type(2) > article:nth-of-type(2) > div:nth-of-type(2) button:nth-of-type(3)");
+
+var characterChoiceNext3 = document.querySelector("main section:nth-of-type(2) > section:nth-of-type(3) > article:nth-of-type(2) > div:nth-of-type(2) button:nth-of-type(3)");
+
+var characterChoiceNext4 = document.querySelector("main section:nth-of-type(2) > section:nth-of-type(4) > article:nth-of-type(2) > div:nth-of-type(2) button:nth-of-type(3)");
+
+var characterChoiceNext5 = document.querySelector("main section:nth-of-type(2) > section:nth-of-type(5) > article:nth-of-type(2) > div:nth-of-type(2) button:nth-of-type(3)");
+
+var characterChoiceNext6 = document.querySelector("main section:nth-of-type(2) > section:nth-of-type(6) > article:nth-of-type(2) > div:nth-of-type(2) button:nth-of-type(3)");
+
+var characterChoiceNext7 = document.querySelector("main section:nth-of-type(2) > section:nth-of-type(7) > article:nth-of-type(2) > div:nth-of-type(2) button:nth-of-type(3)");
+
+var characterChoiceNext8 = document.querySelector("main section:nth-of-type(2) > section:nth-of-type(8) > article:nth-of-type(2) > div:nth-of-type(2) button:nth-of-type(3)");
+
+function characterOneNext() {
+    characterChoice2Detail.classList.add("opendetail");
+    characterChoice2Detail2.classList.add("characterdetailintro1");
+    characterChoice2Detail3.classList.add("characterdetailintro2");
+    characterChoice2Detail4.classList.add("characterdetailintro2");
+    characterChoice2Detail5.classList.add("characterdetailintro2");
+    characterChoice2Detail6.classList.add("characterdetailintro2");
+    characterChoice2Detail7.classList.add("characterdetailintro2");
+    characterChoice2Detail8.classList.add("characterdetailintro3");
+    
+    body.classList.add("no-scroll");
+
+    characterChoice1Detail.classList.add("exitdetail");
+    
+    setTimeout(function () {
+            characterChoice1Detail.classList.remove("opendetail");
+            characterChoice1Detail.classList.remove("exitdetail");
+    }, 1500);
+}
+
+function characterTwoNext() {
+    characterChoice3Detail.classList.add("opendetail");
+    characterChoice3Detail2.classList.add("characterdetailintro1");
+    characterChoice3Detail3.classList.add("characterdetailintro2");
+    characterChoice3Detail4.classList.add("characterdetailintro2");
+    characterChoice3Detail5.classList.add("characterdetailintro2");
+    characterChoice3Detail6.classList.add("characterdetailintro2");
+    characterChoice3Detail7.classList.add("characterdetailintro2");
+    characterChoice3Detail8.classList.add("characterdetailintro3");
+    
+    body.classList.add("no-scroll");
+
+    characterChoice2Detail.classList.add("exitdetail");
+    
+    setTimeout(function () {
+            characterChoice2Detail.classList.remove("opendetail");
+            characterChoice2Detail.classList.remove("exitdetail");
+    }, 1500);
+}
+
+function characterThreeNext() {
+    characterChoice4Detail.classList.add("opendetail");
+    characterChoice4Detail2.classList.add("characterdetailintro1");
+    characterChoice4Detail3.classList.add("characterdetailintro2");
+    characterChoice4Detail4.classList.add("characterdetailintro2");
+    characterChoice4Detail5.classList.add("characterdetailintro2");
+    characterChoice4Detail6.classList.add("characterdetailintro2");
+    characterChoice4Detail7.classList.add("characterdetailintro2");
+    characterChoice4Detail8.classList.add("characterdetailintro3");
+    
+    body.classList.add("no-scroll");
+
+    characterChoice3Detail.classList.add("exitdetail");
+    
+    setTimeout(function () {
+            characterChoice3Detail.classList.remove("opendetail");
+            characterChoice3Detail.classList.remove("exitdetail");
+    }, 1500);
+}
+
+function characterFourNext() {
+    characterChoice5Detail.classList.add("opendetail");
+    characterChoice5Detail2.classList.add("characterdetailintro1");
+    characterChoice5Detail3.classList.add("characterdetailintro2");
+    characterChoice5Detail4.classList.add("characterdetailintro2");
+    characterChoice5Detail5.classList.add("characterdetailintro2");
+    characterChoice5Detail6.classList.add("characterdetailintro2");
+    characterChoice5Detail7.classList.add("characterdetailintro2");
+    characterChoice5Detail8.classList.add("characterdetailintro3");
+    
+    body.classList.add("no-scroll");
+
+    characterChoice4Detail.classList.add("exitdetail");
+    
+    setTimeout(function () {
+            characterChoice4Detail.classList.remove("opendetail");
+            characterChoice4Detail.classList.remove("exitdetail");
+    }, 1500);
+}
+
+function characterFiveNext() {
+    characterChoice6Detail.classList.add("opendetail");
+    characterChoice6Detail2.classList.add("characterdetailintro1");
+    characterChoice6Detail3.classList.add("characterdetailintro2");
+    characterChoice6Detail4.classList.add("characterdetailintro2");
+    characterChoice6Detail5.classList.add("characterdetailintro2");
+    characterChoice6Detail6.classList.add("characterdetailintro2");
+    characterChoice6Detail7.classList.add("characterdetailintro2");
+    characterChoice6Detail8.classList.add("characterdetailintro3");
+    
+    body.classList.add("no-scroll");
+
+    characterChoice5Detail.classList.add("exitdetail");
+    
+    setTimeout(function () {
+            characterChoice5Detail.classList.remove("opendetail");
+            characterChoice5Detail.classList.remove("exitdetail");
+    }, 1500);
+}
+
+function characterSixNext() {
+    characterChoice7Detail.classList.add("opendetail");
+    characterChoice7Detail2.classList.add("characterdetailintro1");
+    characterChoice7Detail3.classList.add("characterdetailintro2");
+    characterChoice7Detail4.classList.add("characterdetailintro2");
+    characterChoice7Detail5.classList.add("characterdetailintro2");
+    characterChoice7Detail6.classList.add("characterdetailintro2");
+    characterChoice7Detail7.classList.add("characterdetailintro2");
+    characterChoice7Detail8.classList.add("characterdetailintro3");
+    
+    body.classList.add("no-scroll");
+
+    characterChoice6Detail.classList.add("exitdetail");
+    
+    setTimeout(function () {
+            characterChoice6Detail.classList.remove("opendetail");
+            characterChoice6Detail.classList.remove("exitdetail");
+    }, 1500);
+}
+
+function characterSevenNext() {
+    characterChoice8Detail.classList.add("opendetail");
+    characterChoice8Detail2.classList.add("characterdetailintro1");
+    characterChoice8Detail3.classList.add("characterdetailintro2");
+    characterChoice8Detail4.classList.add("characterdetailintro2");
+    characterChoice8Detail5.classList.add("characterdetailintro2");
+    characterChoice8Detail6.classList.add("characterdetailintro2");
+    characterChoice8Detail7.classList.add("characterdetailintro2");
+    characterChoice8Detail8.classList.add("characterdetailintro3");
+    
+    body.classList.add("no-scroll");
+
+    characterChoice7Detail.classList.add("exitdetail");
+    
+    setTimeout(function () {
+            characterChoice7Detail.classList.remove("opendetail");
+            characterChoice7Detail.classList.remove("exitdetail");
+    }, 1500);
+}
+
+function characterEightNext() {
+    characterChoice1Detail.classList.add("opendetail");
+    characterChoice1Detail2.classList.add("characterdetailintro1");
+    characterChoice1Detail3.classList.add("characterdetailintro2");
+    characterChoice1Detail4.classList.add("characterdetailintro2");
+    characterChoice1Detail5.classList.add("characterdetailintro2");
+    characterChoice1Detail6.classList.add("characterdetailintro2");
+    characterChoice1Detail7.classList.add("characterdetailintro2");
+    characterChoice1Detail8.classList.add("characterdetailintro3");
+    
+    body.classList.add("no-scroll");
+
+    characterChoice8Detail.classList.add("exitdetail");
+    
+    setTimeout(function () {
+            characterChoice8Detail.classList.remove("opendetail");
+            characterChoice8Detail.classList.remove("exitdetail");
+    }, 1500);
+}
+
+characterChoiceNext1.addEventListener("click", characterOneNext);
+characterChoiceNext2.addEventListener("click", characterTwoNext);
+characterChoiceNext3.addEventListener("click", characterThreeNext);
+characterChoiceNext4.addEventListener("click", characterFourNext);
+characterChoiceNext5.addEventListener("click", characterFiveNext);
+characterChoiceNext6.addEventListener("click", characterSixNext);
+characterChoiceNext7.addEventListener("click", characterSevenNext);
+characterChoiceNext8.addEventListener("click", characterEightNext);
 
 // SETTINGS FUNCTION
 
@@ -600,6 +1096,19 @@ window.addEventListener('scroll', function () {
     }
 });
 
+// DIRECTOR SHOT 
+
+var crossHair = document.querySelector('main section:nth-of-type(5) article:nth-of-type(2) img:nth-of-type(1)');
+var gunHole = document.querySelector('main section:nth-of-type(5) article:nth-of-type(2) img:nth-of-type(2)');
+var directorSection = document.querySelector('main section:nth-of-type(5)');
+
+function revealDirectorContent() {
+    gunHole.style.display = "block";
+    directorSection.classList.add("revealdirectorcontent");
+}
+
+crossHair.addEventListener("click", revealDirectorContent);
+
 // FOOTER SCROLL
 
 var footer = document.querySelector('footer');
@@ -610,7 +1119,7 @@ var footerText2 = document.querySelector('footer > div p:nth-of-type(2)');
 
 window.addEventListener('scroll', function () {
     var footerBottom = footer.getBoundingClientRect().bottom;
-      console.log(footerBottom);
+//      console.log(footerBottom);
     if (footerBottom <= 689) {
         gunLeft.classList.add("gunlefttransition");
         gunRight.classList.add("gunrighttransition");
@@ -628,71 +1137,3 @@ window.addEventListener('scroll', function () {
         footerText2.classList.remove("footeropacity");
     }
 });
-
-//SNOW FUNCION
-
-var c = document.getElementById('canv'),
-    $ = c.getContext("2d");
-var w = c.width = window.innerWidth,
-    h = c.height = window.innerHeight;
-
-Snowy();
-
-function Snowy() {
-    var snow, arr = [];
-    var num = 600,
-        tsc = 1,
-        sp = 1;
-    var sc = 1.3,
-        t = 0,
-        mv = 20,
-        min = 1;
-    for (var i = 0; i < num; ++i) {
-        snow = new Flake();
-        snow.y = Math.random() * (h + 50);
-        snow.x = Math.random() * w;
-        snow.t = Math.random() * (Math.PI * 2);
-        snow.sz = (100 / (10 + (Math.random() * 100))) * sc;
-        snow.sp = (Math.pow(snow.sz * .8, 2) * .15) * sp;
-        snow.sp = snow.sp < min ? min : snow.sp;
-        arr.push(snow);
-    }
-    go();
-
-    function go() {
-        window.requestAnimationFrame(go);
-        $.clearRect(0, 0, w, h);
-        //      $.fillStyle = 'hsla(242, 95%, 3%, 1)';
-        $.fillRect(0, 0, w, h);
-        $.fill();
-        for (var i = 0; i < arr.length; ++i) {
-            f = arr[i];
-            f.t += .05;
-            f.t = f.t >= Math.PI * 2 ? 0 : f.t;
-            f.y += f.sp;
-            f.x += Math.sin(f.t * tsc) * (f.sz * .3);
-            if (f.y > h + 50) f.y = -10 - Math.random() * mv;
-            if (f.x > w + mv) f.x = -mv;
-            if (f.x < -mv) f.x = w + mv;
-            f.draw();
-        }
-    }
-
-    function Flake() {
-        this.draw = function () {
-            this.g = $.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.sz);
-            this.g.addColorStop(0, 'hsla(255,255%,255%,1)');
-            this.g.addColorStop(1, 'hsla(255,255%,255%,0)');
-            $.moveTo(this.x, this.y);
-            $.fillStyle = this.g;
-            $.beginPath();
-            $.arc(this.x, this.y, this.sz, 0, Math.PI * 2, true);
-            $.fill();
-        }
-    }
-}
-/*________________________________________*/
-window.addEventListener('resize', function () {
-    c.width = w = window.innerWidth;
-    c.height = h = window.innerHeight;
-}, false);

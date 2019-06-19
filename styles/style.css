@@ -163,6 +163,11 @@ Black: #17242E
     src: url(../fonts/RockwellStd-BoldCondensed.otf);
 }
 
+@font-face {
+    font-family: "Swanish Two";
+    src: url(../fonts/Swanish Two.otf);
+}
+
 h1 {
     font-family: "Stymie";
     font-size: 6.25rem; 
@@ -209,7 +214,7 @@ body {
     position: relative;
     width: 100vw;
     height: 100vh;
-/*    cursor: url('../images/cursor-red-middle.png'), auto;*/
+    cursor: none;
 }
 
 body.no-scroll {
@@ -229,17 +234,26 @@ body>img {
     z-index: 100;
     width: 30px;
     height: 30px;
-/*
-    border: 3px solid #F83B3F;
-    border-radius: 50%;
-*/
     
     position: absolute;
     transition-duration: .2s;
     transition-timing-function: ease-out;
     pointer-events: none;
+    
+    background-image: url(../images/cursor-red.svg);
+    background-repeat: no-repeat;
+    background-position: left top;
+    background-size: 30px;
+    transform-origin: 50% 50%;
+    
+     animation-name: cursoranimation;
+    animation-duration: 5s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
 }
 
+/*
 .cursor::after {
     z-index: 100;
     width: 30px;
@@ -258,6 +272,16 @@ body>img {
     animation-fill-mode: forwards;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
+}
+*/
+
+.cursor.mouseclick {
+    animation-duration: 1.5s;
+    animation-timing-function: ease-out;
+}
+
+.cursor.mousewhite {
+     background-image: url(../images/cursor-white.svg);
 }
 
 @keyframes cursoranimation {
@@ -687,7 +711,30 @@ transform: translate(-50%, -50%) rotate(-360deg);
 }
 
 
-header a {
+header button {
+    display: inline-block;
+    background-color: transparent;
+    border: none;
+    margin: 0;
+    padding: 0;
+    transition: .3s;
+    opacity: 1;
+    color: #EFEBEC;
+}
+
+header button:nth-of-type(2) {
+    opacity: 0;
+    display: none;
+}
+
+header button:nth-of-type(1).hideheaderopen {
+     opacity: 0;
+    display: none;
+}
+
+
+header button:nth-of-type(2).revealheaderexit {
+     opacity: 1;
     display: inline-block;
 }
 
@@ -1650,17 +1697,29 @@ main section:nth-of-type(3) .sticky--figure {
       object-position: 55% 50%;
   }
 
+.directordivider {
+    margin-top: -2.5rem;
+    position: relative;
+    display: block;
+}
+
 /*DIRECTOR*/
 
-main section:nth-of-type(5) {
+main > section:nth-of-type(5) {
     padding: 12rem 6rem 6rem 6rem;
  background-color: #FCB744;
     width: 100vw;
-    height: 200vh;
+    height: 105vh;
     position: relative;
+    transition: 1s;
+    overflow: hidden;
 }
 
-main section:nth-of-type(5) > img:nth-of-type(1) {
+main > section:nth-of-type(5).revealdirectorcontent {
+    height: 200vh;
+}
+
+main > section:nth-of-type(5) > img:nth-of-type(1) {
     position: absolute;
     top: -3rem;
     width: 100%;
@@ -1669,13 +1728,14 @@ main section:nth-of-type(5) > img:nth-of-type(1) {
     z-index: 10;
 }
 
-main section:nth-of-type(5) article:nth-of-type(1) {
+main > section:nth-of-type(5) article:nth-of-type(1) {
         position: relative;
     z-index: 20;
 }
 
-main section:nth-of-type(5) article:nth-of-type(1) > h2 {
+main > section:nth-of-type(5) article:nth-of-type(1) > h2 {
     width: 70%;
+     width: 50%;
     text-transform: unset;
     color: #17242E;
     line-height: 1.2;
@@ -1684,25 +1744,25 @@ margin-bottom: 6rem;
 
 }
 
-main section:nth-of-type(5) article:nth-of-type(1) p {
+main > section:nth-of-type(5) article:nth-of-type(1) p {
     margin-bottom: 6rem;
     width: 24rem;
 }
 
-main section:nth-of-type(5) article:nth-of-type(1) div:nth-of-type(1) {
+main > section:nth-of-type(5) article:nth-of-type(1) div:nth-of-type(1) {
     margin-bottom: 6rem;
 }
 
-main section:nth-of-type(5) article:nth-of-type(1) div:nth-of-type(1)  img {
+main > section:nth-of-type(5) article:nth-of-type(1) div:nth-of-type(1)  img {
     display: inline-block;
     width: 8rem;
 }
 
-main section:nth-of-type(5) article:nth-of-type(1) div:nth-of-type(1)  img:nth-of-type(2) {
+main > section:nth-of-type(5) article:nth-of-type(1) div:nth-of-type(1)  img:nth-of-type(2) {
     margin-left: 3rem;
 }
 
-main section:nth-of-type(5) article:nth-of-type(2) {
+main > section:nth-of-type(5) article:nth-of-type(2) {
     position: absolute;
     top: 0;
     width: 100%;
@@ -1713,7 +1773,7 @@ main section:nth-of-type(5) article:nth-of-type(2) {
     overflow: hidden;
 }
 
-main section:nth-of-type(5) article:nth-of-type(2) p {
+main > section:nth-of-type(5) article:nth-of-type(2) p {
     position: absolute;
     top: 3rem;
     right: 20rem;
@@ -1722,37 +1782,54 @@ main section:nth-of-type(5) article:nth-of-type(2) p {
     color: #F83B3F;
 }
 
-main section:nth-of-type(5) article:nth-of-type(2) img {
+main > section:nth-of-type(5) article:nth-of-type(2) img {
     position: absolute;
     top: 0rem;
     right: -20rem;
     width: 1100px;
 }
 
-main section:nth-of-type(5) article:nth-of-type(2) p:nth-of-type(2) {
+main > section:nth-of-type(5) article:nth-of-type(2) img:nth-of-type(1) {
+    position: absolute;
+    top: 9rem;
+    right: 16.5rem;
+    width: 2.5rem;
+    z-index: 20;
+}
+
+main > section:nth-of-type(5) article:nth-of-type(2) img:nth-of-type(2) {
+        position: absolute;
+    top: 5rem;
+    right: 13.5rem;
+    width: 8rem;
+    z-index: 30;
+    display: none;
+}
+
+main > section:nth-of-type(5) article:nth-of-type(2) p:nth-of-type(2) {
     font-size: 16rem;
     top: 25rem;
     right: 6rem;
 }
 
-main section:nth-of-type(5) > div:nth-of-type(1) {
+main > section:nth-of-type(5) > div:nth-of-type(1) {
     position: relative;
     height: 30rem;
     width: 100%;
 }
 
-main section:nth-of-type(5) > div:nth-of-type(1) img:nth-of-type(1) {
+main > section:nth-of-type(5) > div:nth-of-type(1) img:nth-of-type(1) {
     position: relative;
     margin-left: -6rem;
 }
 
-main section:nth-of-type(5) > div:nth-of-type(1) img:nth-of-type(2) {
+main > section:nth-of-type(5) > div:nth-of-type(1) img:nth-of-type(2) {
     margin-top: -3rem;
     margin-left: -18rem;
     height: 100%;
 }
 
-main section:nth-of-type(5) > div:nth-of-type(1) span {
+main > section:nth-of-type(5) > div:nth-of-type(1) span {
      position: absolute;
     top: calc(50% + 3rem);
     transform: translateY(-50%);
@@ -1763,7 +1840,7 @@ main section:nth-of-type(5) > div:nth-of-type(1) span {
 }
 
 
-main section:nth-of-type(5) > div:nth-of-type(1) p {
+main > section:nth-of-type(5) > div:nth-of-type(1) p {
     color: #EFEBEC;
     position: absolute;
     top: calc(50% + 3rem);
