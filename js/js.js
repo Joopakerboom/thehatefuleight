@@ -137,6 +137,7 @@ var headerLogo = document.querySelector('header svg:nth-of-type(1)');
 var headerOpen = document.querySelector('header button:nth-of-type(1)');
 var headerExit = document.querySelector('header button:nth-of-type(2)');
 var headerNav = document.querySelector('header nav');
+var headerUl = document.querySelector('header nav ul');
 
 function showNav() {
     headerNav.classList.add("shownav");
@@ -160,6 +161,7 @@ function hideNav() {
 
 headerOpen.addEventListener("click", showNav);
 headerExit.addEventListener("click", hideNav);
+headerUl.addEventListener("click", hideNav);
 
 //function hideNav(elem) {
 //    var list = traverseChildren(elem);
