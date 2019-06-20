@@ -847,6 +847,17 @@ main > section:nth-of-type(1) {
   transform: translateZ(-.5px) scale(1.5);
 }
 
+.flyingbirds {
+    opacity: 0;
+    transform: translate(-1rem, 1rem);
+}
+
+.flyingbirds.scaredflyingbirds {
+    opacity: 1;
+        transform: translate(0rem, 0rem);
+    transition: 1s;
+}
+
 .parallax__layer--3 {
   transform: translateZ(-1px) scale(2);
 }
@@ -1223,6 +1234,18 @@ main section:nth-of-type(2) > section:nth-of-type(2) > article:nth-of-type(1) > 
     height: 1700px;
     left: 5rem;
     top: -23rem;
+}
+
+main section:nth-of-type(2) > section:nth-of-type(6) > article:nth-of-type(1) > img:nth-of-type(1) {
+    height: 700px;
+    left: 2rem;
+    top: 7rem;
+}
+
+main section:nth-of-type(2) > section:nth-of-type(7) > article:nth-of-type(1) > img:nth-of-type(1) {
+        height: 450px;
+    left: 6rem;
+    top: 21rem;
 }
 
 main section:nth-of-type(2) > section > article:nth-of-type(1) > div {

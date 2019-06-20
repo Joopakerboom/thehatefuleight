@@ -19,6 +19,7 @@ var bullets = 0;
 
 var gunShot = document.querySelector("audio:nth-of-type(1)");
 var gunCock = document.querySelector("audio:nth-of-type(2)");
+var birdFly = document.querySelector("audio:nth-of-type(3)");
 
 var gunBarrel = document.querySelector('header svg:nth-of-type(2)');
 var bullet1 = document.querySelector('#bullet1');
@@ -34,6 +35,8 @@ var headerBullet7 = document.querySelector('header > nav div > svg:nth-of-type(2
 var headerBullet8 = document.querySelector('header > nav div > svg:nth-of-type(1)');
 
 var outOfBullets = document.querySelector('body > section:nth-of-type(2)');
+
+var flyingBirds = document.querySelector('.flyingbirds');
 
 
 function myBullets() {
@@ -52,6 +55,9 @@ function myBullets() {
         gunCock.play();
         
         headerBullet1.classList.add("usedbullet");
+        
+        flyingBirds.classList.add("scaredflyingbirds");
+        birdFly.play();
     }
 
     if (bullets === 2) {
@@ -1098,9 +1104,9 @@ window.addEventListener('scroll', function () {
 
 // DIRECTOR SHOT 
 
-var crossHair = document.querySelector('main section:nth-of-type(5) article:nth-of-type(2) img:nth-of-type(1)');
-var gunHole = document.querySelector('main section:nth-of-type(5) article:nth-of-type(2) img:nth-of-type(2)');
-var directorSection = document.querySelector('main section:nth-of-type(5)');
+var crossHair = document.querySelector('main > section:nth-of-type(5) article:nth-of-type(2) img:nth-of-type(1)');
+var gunHole = document.querySelector('main > section:nth-of-type(5) article:nth-of-type(2) img:nth-of-type(2)');
+var directorSection = document.querySelector('main > section:nth-of-type(5)');
 
 function revealDirectorContent() {
     gunHole.style.display = "block";
